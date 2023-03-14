@@ -1,0 +1,27 @@
+.GSTbill{
+    margin-left: 25px;
+    margin-right: 25px;
+    height: 40px;
+    width: 90px;
+    border-radius: 7px;
+    border-color: rgb(99, 195, 165);
+    background-color: rgb(99, 195, 165);
+    color: white;
+}
+.GSTbill:hover{
+background-color: white;
+color: rgb(99, 195, 165);
+border-color: rgb(99, 195, 165);
+}
+.SendEnquiry{
+    width:22%;height:50px; border-radius:5px;
+    background-color: rgb(99, 195, 165);
+    border-color: rgb(99, 195, 165); 
+    color: white;
+}
+input:focus{
+    outline: none;
+}
+button:focus{
+    outline: none;
+}

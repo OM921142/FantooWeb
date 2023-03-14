@@ -1,0 +1,17 @@
+.addCart{
+    width: 200px;
+    height: 40px;margin-left: 50px;margin-right: 50px;
+    background-color: rgb(99, 195, 165);
+    border-radius: 6px;color: white;width: 200px;height:40px;border-color: rgb(99, 195, 165);border-width: 1;
+}
+/* .addCart:hover{
+    background-color: white; color:rgb(99, 195, 165);border-color: rgb(99, 195, 165);
+} */
+.wishlist{
+    border-radius: 6px; border-width: 1;width: 200px;margin-left: 50px;margin-right: 50px;
+    height: 40px; background-color: white; color:rgb(99, 195, 165);border-color: rgb(99, 195, 165);
+}
+.wishlist:hover{
+    border-radius: 6px;color: white;
+    border-width: 1;background-color: rgb(99, 195, 165);
+}
