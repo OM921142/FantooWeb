@@ -19,6 +19,7 @@ import WishList from "../Screen/WishList/WishList";
 import Protected from "./Protected";
 import CartPage from '../Screen/Cart/CartPage'
 import WishListCategory from "../Screen/WishList/WishListCategory";
+import SearchComponent from "../Screen/SearchComponent";
 
 
 const Routing = () => {
@@ -42,6 +43,7 @@ const Routing = () => {
         <Route path="Unauth" element={<Unauth />} />
         <Route path="EventDetailsforGSTbill" element={<EventDetailsforGSTbill />} />
         <Route path="WishListCategory" element={<WishListCategory />} />
+        <Route path="SearchComponent" element={<SearchComponent />} />
 
         <Route element={<Protected />}>
 

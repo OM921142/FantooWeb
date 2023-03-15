@@ -1,8 +1,11 @@
 const PRODUCTION = false;
 const END_POINT = PRODUCTION
-  ? //  "https://funtoo.invoice2day.in/"
-    "https://funworks.in/"
-  : "https://ehostingguru.com/stage/funtoo/";
+	?
+	 "https://funworks.in/"
+	//   "https://funworks.in/funtootest/"
+	:  "https://funworks.in/funtootest/"
+	// : "https://ehostingguru.com/stage/funtoo/"
+	;
 export default {
   CORS_URL: `https://cors-anywhere.herokuapp.com/`,
   BASE_URL: `${END_POINT}api/`,

@@ -18,16 +18,18 @@ import Footer from "../Layout/Footer";
 
 
 
-import OwlCarousel from 'react-owl-carousel';  
-import 'owl.carousel/dist/assets/owl.carousel.css';  
-import 'owl.carousel/dist/assets/owl.theme.default.css'; 
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { getNewArrivalsDetails, getSlider } from "../services/APIServices";
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       sliderImage: [],
-      slider: "",
+      arrivalsDetails:[],
+      slider: [],
       categoryList: [],
       isOpen: false
     };
@@ -37,36 +39,31 @@ export default class Home extends Component {
 
 
   componentDidMount() {
-    this.loadCommitHistory();
+    this.loadAll();
     this.loadCategoryList();
 
-    // console.log("....", this.state.sliderImage);
+
   }
 
-  loadCommitHistory() {
-    let url = Configs.CORS_URL;
-    let headers = {
-      // "X-RapidAPI-Host": "motorcycle-specs-database.p.rapidapi.com",
-      // "X-RapidAPI-Key": "MyAPIKey",
-    };
-    axios
-      .get(
-        `https://ehostingguru.com/stage/funtoo/api/api/get_slider`,
-        " X-Requested-With"
-      )
-      .then((res) => {
-        console.log("Axios response", res.data);
-        this.setState({ sliderImage: res.data.data });
+
+  loadAll = () => {
+    Promise.all([getSlider(),getNewArrivalsDetails()])
+      .then((response) => {
+        this.setState({
+          sliderImage: response[0].data,
+          arrivalsDetails: response[1].data,
+        });
+        console.log('slider arrivalsDetails->>>>>>>>', this.state.arrivalsDetails);
       })
       .catch((err) => {
-        console.log("axios Error", err);
+        console.log(err);
       });
   }
 
   loadCategoryList = () => {
     GetCategorys()
       .then((res) => {
-        console.log("......rr.......", res.data);
+        // console.log("......rr.......", res.data);
         this.setState({
           categoryList: res.data,
           isLoading: false,
@@ -77,17 +74,15 @@ export default class Home extends Component {
       });
   };
 
-
-
   render() {
-    console.log(".map.................", this.state.sliderImage);
+
     return (
-      <div style={{ overflow: "hidden "}}>
-      <Header />
-      <div className="container">
-        <div style={{marginTop:'1.2%'}}>
-          <FontAwesomeIcon icon="check-square" />
-          {/* <Carousel variant="dark">
+      <div style={{ overflow: "hidden " }}>
+        <Header />
+        <div className="container">
+          <div style={{ marginTop: '1.2%' }}>
+            <FontAwesomeIcon icon="check-square" />
+            {/* <Carousel variant="dark">
             {this.state.sliderImage.map((img) => (
               <Carousel.Item>
                 <img
@@ -102,32 +97,26 @@ export default class Home extends Component {
               </Carousel.Item>
             ))}
           </Carousel> */}
-          <Carousel>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="../Images/banner1.png"
-                alt="First slide"
-              />
-              
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="../Images/banner1.png"
-                alt="Second slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="../Images/banner1.png"
-                alt="Third slide"
-              />
-            </Carousel.Item>
-          </Carousel>
-        </div>
-     
+            <Carousel >
+              {this.state?.sliderImage.map((item) => {
+                return (
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100"
+                      src={item.image}
+                      alt="First slide"
+                      style={{height:'60vh'}}
+                    />
+
+                  </Carousel.Item>
+
+                )
+              }
+
+              )}
+            </Carousel>
+          </div>
+
           {/* <Carousel variant="dark">
             <Carousel.Item>
               {this.state.categoryList.map((food) => (
@@ -181,24 +170,24 @@ export default class Home extends Component {
 
           </div> */}
 
-<div style={{marginTop:20}}>
-<OwlCarousel items={4}  
-          // loop  
-          // nav  
-          margin={8} >   
-            {products.product.map((a) =>
-                <Card style={{ alignItems: "center", borderWidth: 0,display:'inline' }}>
-                  <Card.Img style={{ height: 30, width: 30,margin:' 0px auto ' }} src={a.image} />
+          <div style={{ marginTop: 20 }}>
+            <OwlCarousel items={4}
+              // loop  
+              // nav  
+              margin={8} >
+              {this.state.arrivalsDetails.map((a) =>
+                <Card style={{ alignItems: "center", borderWidth: 0, display: 'inline' }}>
+                  <Card.Img style={{ height: 30, width: 30, margin: ' 0px auto ' }} src={a.image} />
                   <Card.Text>
-                  {a.title}
+                    {a.name}
                   </Card.Text>
-                </Card> 
-            )}         
-       </OwlCarousel>
-</div>
+                </Card>
+              )}
+            </OwlCarousel>
+          </div>
 
-        <br></br>
-        {/* <div style={{ marginTop: '2%',
+          <br></br>
+          {/* <div style={{ marginTop: '2%',
         direction:'ltr',overflow:'auto', }}>
           <Row xs={4} sm={4} md={6} lg={6} className="g-4">
             {products.product.map((a) =>
@@ -213,27 +202,27 @@ export default class Home extends Component {
             )}
           </Row>
         </div> */}
-          <div className="SpaceHomePage">   
-            <Row xs={3}  md={3} className="g-4" style={{borderRadius:0}}>
+          <div className="SpaceHomePage">
+            <Row xs={3} md={3} className="g-4" style={{ borderRadius: 0 }}>
               {card.Card.map((b) =>
                 <Col>
-          
-                  <Card style={{borderWidth:1,borderRadius:0}}>
-                    <Card.Img style={{borderRadius:0}}  src={ b.image} />
+
+                  <Card style={{ borderWidth: 1, borderRadius: 0 }}>
+                    <Card.Img style={{ borderRadius: 0 }} src={b.image} />
                   </Card>
-             
+
                 </Col>
               )}
             </Row>
           </div>
-        <div style={{marginBottom:'1%'}}>
-          <br></br>
-        
-       </div>
-      </div>
-      <Footer />
-      <div style={{marginBottom:'0.2%',}}>  
-       </div>
+          <div style={{ marginBottom: '1%' }}>
+            <br></br>
+
+          </div>
+        </div>
+        <Footer />
+        <div style={{ marginBottom: '0.2%', }}>
+        </div>
       </div>
     );
   }

@@ -4,11 +4,7 @@ import AppContext from '../../context/AppContext'
 import CartHeader from './CartHeader'
 import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import CartItem from './CartItem'
-import EventDetails from '../EventDetails/EventDetails'
-import Gamedetails from '../GameDetails/Gamedetails'
 import SubTotal from './SubTotal'
 import images from '../../Images/image3.png'
 import Images from '../../Images/image2.png'

@@ -1,4 +1,4 @@
-import { useLastNotificationResponse } from "expo-notifications";
+
 import Configs from "../config/Configs";
 
 const getFormData = (obj) => {

@@ -64,7 +64,7 @@ const cart =()=>{
       navigate('/EventDetailsforGSTbill')
   } 
     return (
-        //console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',wishlistAdd),
+        console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',wishlistAdd),
       <div style={{width:'100%'}}>
 <GameHeader />
             <div >

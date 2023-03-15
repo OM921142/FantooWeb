@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Data from '../SubCatagory/SubCat.json'
 import { useNavigate } from 'react-router-dom';
@@ -12,35 +12,36 @@ import context from 'react-bootstrap/esm/AccordionContext';
 
 
 
-export default function EventDetails() {
-  
-const conTexts = AppContext;
+const EventDetails = () => {
+
+  const conTexts = AppContext;
 
 
-    const value = useParams();
-    console.log("in subtrtrcat", value);
-    let product = Data.Games.find((data) => data.title === value.cart)
-    console.log('jkjjkj',product);
+  const value = useParams();
+  console.log("in subtrtrcat", value);
+  let product = Data.Games.find((data) => data.title === value.cart)
+  console.log('jkjjkj', product);
 
-   //
-   const [showModal, setShow] = useState(false); 
-   const handleClose = () => 
- {  setShow(false)}
-   const handleShow = () => {setShow(true)}
-   
-    const navigate = useNavigate();
-    const lgn = () => {
+  //
+  const [showModal, setShow] = useState(false);
+  const handleClose = () => { setShow(false) }
+  const handleShow = () => { setShow(true) }
 
-        navigate('/EventDetailsforGSTbill')
-    }
+  const navigate = useNavigate();
+  const lgn = () => {
+
+    navigate('/EventDetailsforGSTbill')
+  }
 
   return (
     <>
       <div style={{ backgroundColor: '#eee', }}>
         <EventDetHeader />
 
-  <div style={{ marginTop: '0%', marginRight: 15, marginLeft: '21%', 
-  marginRight: '18%' }}>
+        <div style={{
+          marginTop: '0%', marginRight: 15, marginLeft: '21%',
+          marginRight: '18%'
+        }}>
           {/* <div>
             <div style={{
               alignItems: 'center', justifyContent: 'center', display: 'flex',
@@ -460,7 +461,7 @@ const conTexts = AppContext;
         </div> */}
 
         {/* // */}
-        
+
         {/* // */}
 
         {/* <div style={{ marginRight: 10, marginLeft: '21%', marginRight: '18%', }}>
@@ -534,13 +535,13 @@ const conTexts = AppContext;
         {/* // */}
 
         {/* // */}
-       
+
         {/*     */}
 
-      
-{/* // */}
 
-{/* <div style={{display:"flex",alignItems:"center",
+        {/* // */}
+
+        {/* <div style={{display:"flex",alignItems:"center",
 justifyContent:'center',marginLeft:45,borderWidth:0}}>
 <Card style={{ width: '63%',borderWidth:0,borderRadius:0 }}>
       
@@ -570,174 +571,184 @@ justifyContent:'center',marginLeft:45,borderWidth:0}}>
 
 
 
-        
+
         {/* // */}
 
-       
-<div style={{
-  backgroundColor:'white',marginLeft:'5%',marginRight:'5%',borderBottom: '1px solid #ddd',}}>
 
-<div class="d-flex" style={{padding: 5, display:'flex',alignItems:'center',justifyContent:'center',borderBottom: '1px solid #ddd',
- }}>
-  <div class="p-2 flex-fill">
-   <text style={{float:'left'}}> Event Start: </text>
-    </div>
- 
-  <div class="p-2 flex-fill">
-    <input style={{width:100,borderWidth:0}}></input>
-  </div>
-  
-  
-  <div class="p-2 flex-fill"> Time:  </div>
-  <div class="p-2 flex-fill">
-    <input style={{width:100,borderWidth:0}}></input>
-    </div>
-</div>
+        <div style={{
+          backgroundColor: 'white', marginLeft: '5%', marginRight: '5%', borderBottom: '1px solid #ddd',
+        }}>
 
-<div class="d-flex" style={{padding: 5, display:'flex',alignItems:'center',
-justifyContent:'center',borderBottom: '1px solid #ddd',
- }}>
-  <div class="p-2 flex-fill">
-   <text style={{float:'left'}}> Event End: </text>
-    </div>
- 
-  <div class="p-2 flex-fill">
-    <input style={{width:100,borderWidth:0}}></input>
-  </div>
-  
-  
-  <div class="p-2 flex-fill"> Time:  </div>
-  <div class="p-2 flex-fill">
-    <input style={{width:100,borderWidth:0}}></input>
-    </div>
-</div>
+          <div class="d-flex" style={{
+            padding: 5, display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #ddd',
+          }}>
+            <div class="p-2 flex-fill">
+              <text style={{ float: 'left' }}> Event Start: </text>
+            </div>
 
-<div class="d-flex" style={{padding: 5, display:'flex',alignItems:'center',justifyContent:'center',borderBottom: '1px solid #ddd',
- }}>
-  <div class="p-2 flex-fill">
-   <text style={{float:'left',marginLeft:2,}}> Set Up: </text>
-    </div>
- 
-  <div class="p-2 flex-fill">
-    <input style={{width:100,borderWidth:0}}></input>
-  </div>
-  
-  
-  <div class="p-2 flex-fill" style={{marginLeft:15,}}> Time:</div>
-  <div class="p-2 flex-fill">
-    <input style={{width:100,borderWidth:0}}></input>
-    </div>
-</div>
+            <div class="p-2 flex-fill">
+              <input style={{ width: 100, borderWidth: 0 }}></input>
+            </div>
 
-<div class="d-flex" style={{padding: 2, display:'flex',alignItems:'center',
-justifyContent:'center',borderBottom: '1px solid #ddd',
- }}>
-  <div class="p-2 flex-fill" style={{marginLeft:0}}>
-   <text style={{float:'left'}}>#of Guests: </text>
-    </div>
- 
-  <div class="p-2 flex-fill">
-    <input style={{borderWidth:0}}></input>
-  </div>
-  
-  
-  
-</div>
 
-<div class="d-flex" style={{padding: 2, display:'flex',alignItems:'center',justifyContent:'center',borderBottom: '1px solid #ddd',
- }}>
-  <div class="p-2 flex-fill" style={{marginLeft:2}}>
-   <text style={{float:'left'}}> Event Type: </text>
-    </div>
- 
-  <div class="p-2 flex-fill">
-    <input style={{borderWidth:0}}></input>
-  </div>
-  
-  
-  
-</div>
-</div>
+            <div class="p-2 flex-fill"> Time:  </div>
+            <div class="p-2 flex-fill">
+              <input style={{ width: 100, borderWidth: 0 }}></input>
+            </div>
+          </div>
 
-<div style={{
-  backgroundColor:'white',marginLeft:'5%',marginRight:'5%',borderBottom: '1px solid #ddd',marginTop:'4%'}}>
-<div class="d-flex" style={{ display:'flex',alignItems:'center',justifyContent:'center'}}>
-  <div class="p-2 flex-fill" style={{width:'40%'}}> <text style={{float:"left"}}>Special Instructions :</text> </div>
-  <div class="p-2 flex-fill"> <input style={{height:50,borderWidth:0,width:100}}></input></div>
-  {/* <div class="p-2 flex-fill">Flex item</div> */}
-</div></div>
-{/* //item */}
-<div style={{
-  backgroundColor:'white',marginLeft:'5%',marginRight:'5%',borderBottom: '1px solid #ddd',marginTop:'3%'}}>
-<div class="d-flex">
-  <div class="p-2 flex-fill" >
-  <img style={{
-              display: 'flex', marginLeft: '15%', marginRight: '15%',
-              marginLeft: '1%', marginBottom: 15
-            }} src={product.image}></img>
-    </div>
-  <div class="p-2 flex-fill"> 
-  <text style={{
-              display: "flex", marginBottom: 15,
-              marginLeft: "-0%"
-            }}>{product.title}</text>
-  </div>
-  <div class="p-2 flex-fill">
-  <text style={{ marginRight: 0 }}> $ {value.price}</text>
-  </div>
-</div>
-</div>
-{/* //Pay */}
-<div style={{
-  backgroundColor:'white',marginLeft:'5%',marginRight:'5%',borderBottom: '1px solid #ddd',marginTop:'3%'}}>
+          <div class="d-flex" style={{
+            padding: 5, display: 'flex', alignItems: 'center',
+            justifyContent: 'center', borderBottom: '1px solid #ddd',
+          }}>
+            <div class="p-2 flex-fill">
+              <text style={{ float: 'left' }}> Event End: </text>
+            </div>
 
-<div class="d-flex mb-3">
-  <div class="me-auto p-2"> Payment Method: </div>
+            <div class="p-2 flex-fill">
+              <input style={{ width: 100, borderWidth: 0 }}></input>
+            </div>
 
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-  <label class="form-check-label" for="inlineRadio1"> Cheque</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-  <label class="form-check-label" for="inlineRadio2"> Online </label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-  <label class="form-check-label" for="inlineRadio2"> Cash </label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-  <label class="form-check-label" for="inlineRadio2"> UPI </label>
-</div>
-</div>
 
-{/* //Addd */}
+            <div class="p-2 flex-fill"> Time:  </div>
+            <div class="p-2 flex-fill">
+              <input style={{ width: 100, borderWidth: 0 }}></input>
+            </div>
+          </div>
 
-<div style={{
-  backgroundColor:'white',marginLeft:'5%',marginRight:'5%',borderBottom: '1px solid #ddd',}}>
-<div class="d-flex mb-3" style={{marginTop:'4%',}}>
-  <div class="p-2" style={{width:'29%'}}> <text style={{float:'left'}}>Sub Total</text></div>
-  <div class="p-2" style={{width:'29%'}}> </div>
-  <div class="ms-auto p-2" style={{width:'27%'}}> $ {value.price}</div>
-</div>
-<div class="d-flex mb-3" style={{marginTop:'0%',}}>
-  <div class="p-2" style={{width:'25%'}}><text style={{float:'left'}}> Transport Charges: </text></div>
-  <div class="p-2"  style={{width:'29%'}}> </div>
-  <div class="ms-auto p-2" style={{width:'29%'}}> $ 0</div>
-</div>
-<div class="d-flex mb-3" style={{marginTop:'0%',}}>
-  <div class="p-2" style={{width:'25%'}}><text style={{float:'left',}}> GST Ammount: </text></div>
-  <div class="p-2"  style={{width:'29%'}}> </div>
-  <div class="ms-auto p-2" style={{width:'29%'}}> $ 0</div>
-</div>
-<div class="d-flex mb-3" style={{marginTop:'0%',}}>
-  <div class="p-2" style={{width:'25%'}}><text style={{float:'left',fontWeight:'bold'}}> Total Ammount: </text></div>
-  <div class="p-2"  style={{width:'29%'}}> </div>
-  <div class="ms-auto p-2" style={{width:'27%',fontWeight:'bold'}}>  $ {value.price}</div>
-</div>
-</div>
+          <div class="d-flex" style={{
+            padding: 5, display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #ddd',
+          }}>
+            <div class="p-2 flex-fill">
+              <text style={{ float: 'left', marginLeft: 2, }}> Set Up: </text>
+            </div>
+
+            <div class="p-2 flex-fill">
+              <input style={{ width: 100, borderWidth: 0 }}></input>
+            </div>
+
+
+            <div class="p-2 flex-fill" style={{ marginLeft: 15, }}> Time:</div>
+            <div class="p-2 flex-fill">
+              <input style={{ width: 100, borderWidth: 0 }}></input>
+            </div>
+          </div>
+
+          <div class="d-flex" style={{
+            padding: 2, display: 'flex', alignItems: 'center',
+            justifyContent: 'center', borderBottom: '1px solid #ddd',
+          }}>
+            <div class="p-2 flex-fill" style={{ marginLeft: 0 }}>
+              <text style={{ float: 'left' }}>#of Guests: </text>
+            </div>
+
+            <div class="p-2 flex-fill">
+              <input style={{ borderWidth: 0 }}></input>
+            </div>
+
+
+
+          </div>
+
+          <div class="d-flex" style={{
+            padding: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #ddd',
+          }}>
+            <div class="p-2 flex-fill" style={{ marginLeft: 2 }}>
+              <text style={{ float: 'left' }}> Event Type: </text>
+            </div>
+
+            <div class="p-2 flex-fill">
+              <input style={{ borderWidth: 0 }}></input>
+            </div>
+
+
+
+          </div>
+        </div>
+
+        <div style={{
+          backgroundColor: 'white', marginLeft: '5%', marginRight: '5%', borderBottom: '1px solid #ddd', marginTop: '4%'
+        }}>
+          <div class="d-flex" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div class="p-2 flex-fill" style={{ width: '40%' }}> <text style={{ float: "left" }}>Special Instructions :</text> </div>
+            <div class="p-2 flex-fill"> <input style={{ height: 50, borderWidth: 0, width: 100 }}></input></div>
+            {/* <div class="p-2 flex-fill">Flex item</div> */}
+          </div></div>
+        {/* //item */}
+        <div style={{
+          backgroundColor: 'white', marginLeft: '5%', marginRight: '5%', borderBottom: '1px solid #ddd', marginTop: '3%'
+        }}>
+          <div class="d-flex">
+            <div class="p-2 flex-fill" >
+              <img style={{
+                display: 'flex', marginLeft: '15%', marginRight: '15%',
+                marginLeft: '1%', marginBottom: 15
+              }} src={product.image}></img>
+            </div>
+            <div class="p-2 flex-fill">
+              <text style={{
+                display: "flex", marginBottom: 15,
+                marginLeft: "-0%"
+              }}>{product.title}</text>
+            </div>
+            <div class="p-2 flex-fill">
+              <text style={{ marginRight: 0 }}> $ {value.price}</text>
+            </div>
+          </div>
+        </div>
+        {/* //Pay */}
+        <div style={{
+          backgroundColor: 'white', marginLeft: '5%', marginRight: '5%', borderBottom: '1px solid #ddd', marginTop: '3%'
+        }}>
+
+          <div class="d-flex mb-3">
+            <div class="me-auto p-2"> Payment Method: </div>
+
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+            <label class="form-check-label" for="inlineRadio1"> Cheque</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+            <label class="form-check-label" for="inlineRadio2"> Online </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+            <label class="form-check-label" for="inlineRadio2"> Cash </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+            <label class="form-check-label" for="inlineRadio2"> UPI </label>
+          </div>
+        </div>
+
+        {/* //Addd */}
+
+        <div style={{
+          backgroundColor: 'white', marginLeft: '5%', marginRight: '5%', borderBottom: '1px solid #ddd',
+        }}>
+          <div class="d-flex mb-3" style={{ marginTop: '4%', }}>
+            <div class="p-2" style={{ width: '29%' }}> <text style={{ float: 'left' }}>Sub Total</text></div>
+            <div class="p-2" style={{ width: '29%' }}> </div>
+            <div class="ms-auto p-2" style={{ width: '27%' }}> $ {value.price}</div>
+          </div>
+          <div class="d-flex mb-3" style={{ marginTop: '0%', }}>
+            <div class="p-2" style={{ width: '25%' }}><text style={{ float: 'left' }}> Transport Charges: </text></div>
+            <div class="p-2" style={{ width: '29%' }}> </div>
+            <div class="ms-auto p-2" style={{ width: '29%' }}> $ 0</div>
+          </div>
+          <div class="d-flex mb-3" style={{ marginTop: '0%', }}>
+            <div class="p-2" style={{ width: '25%' }}><text style={{ float: 'left', }}> GST Ammount: </text></div>
+            <div class="p-2" style={{ width: '29%' }}> </div>
+            <div class="ms-auto p-2" style={{ width: '29%' }}> $ 0</div>
+          </div>
+          <div class="d-flex mb-3" style={{ marginTop: '0%', }}>
+            <div class="p-2" style={{ width: '25%' }}><text style={{ float: 'left', fontWeight: 'bold' }}> Total Ammount: </text></div>
+            <div class="p-2" style={{ width: '29%' }}> </div>
+            <div class="ms-auto p-2" style={{ width: '27%', fontWeight: 'bold' }}>  $ {value.price}</div>
+          </div>
+        </div>
 
 
 
@@ -747,14 +758,14 @@ justifyContent:'center',borderBottom: '1px solid #ddd',
 
         <div style={{ backgroundColor: '#eee', }}>
           {/* <Link to={`/EventDetails/${product.title}`}> */}
-         
+
           {/* </Link> */}
         </div>
 
-<Button className='SendEnquiry' onClick={handleShow}
->
-<text style={{ fontSize: 20, color: 'white',textAlign:"center" }}> Send Enquiry </text>
-</Button>
+        <Button className='SendEnquiry' onClick={handleShow}
+        >
+          <text style={{ fontSize: 20, color: 'white', textAlign: "center" }}> Send Enquiry </text>
+        </Button>
 
 
 
@@ -798,15 +809,15 @@ justifyContent:'center',borderBottom: '1px solid #ddd',
 
         {/* 
       /// */}
-        <div style={{ marginBottom: '2%',backgroundColor:'#eee' }}>
+        <div style={{ marginBottom: '2%', backgroundColor: '#eee' }}>
           <br></br>
           <br></br><br></br>
         </div>
       </div>
 
 
-     
-    
+
+
     </>
   )
 }
@@ -859,7 +870,7 @@ justifyContent:'center',borderBottom: '1px solid #ddd',
 //     marginBottom: 0,
 //     borderBottomWidth: 0.6, height: 45,
 //     borderBottomColor: "#cfcfcf",}}>
-        
+
 //         <div style={{ width: "47%",
 //     backgroundColor: "#fff",
 //     paddingLeft: 10,
@@ -869,7 +880,7 @@ justifyContent:'center',borderBottom: '1px solid #ddd',
 //     color: 'black',
 //     marginBottom: 0,}}> Event Start: </text>
 //         </div>
-        
+
 //         <div style={{ flexDirection: "row",display:"flex",
 //     width: "37%",
 //     marginLeft: 0,
@@ -894,7 +905,7 @@ justifyContent:'center',borderBottom: '1px solid #ddd',
 //     height: 23,marginRight:35,
 //     borderLeftColor: "#444",
 //     opacity: 0.4,}}></div>
-     
+
 //      <text style={{ alignSelf: "center",
 //     marginVertical: 2,}}>Time</text>
 
@@ -980,7 +991,7 @@ justifyContent:'center',borderBottom: '1px solid #ddd',
 
 //     </div>
 //       </div>
-      
+
 //       <div style={{flex:1,backgroundColor:'#eee'}}>
 //       <div style={{ marginTop: -110,
 //     flexDirection: "row",display:'flex',
@@ -1016,9 +1027,10 @@ justifyContent:'center',borderBottom: '1px solid #ddd',
 // </div>
 //       </div>
 //       </div>
-        
+
 //         </div>
 //     )
 //   }
 // }
 
+export default EventDetails
