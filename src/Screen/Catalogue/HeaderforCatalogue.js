@@ -74,7 +74,7 @@ console.log('25',conText.arr.length);
          </div>
          
          <div style={{display:'float'}}>
-           <text style={{fontSize:18,color:'white'}}>{conText.arr.length}</text>
+           {/* <text style={{fontSize:18,color:'white'}}>{conText.arr.length}</text> */}
            </div>
        
        
@@ -85,13 +85,13 @@ console.log('25',conText.arr.length);
         <FontAwesomeIcon icon={faCartArrowDown} size='25px' />
         </button>
         </div>
-
+{/* 
         <div style={{marginRight:'1%',color:'white',fontSize:25}}>
         <button onClick={lgnd} style={{borderWidth:0,paddingLeft:15,fontSize:25,color:'white',
           background:'rgb(99, 195, 165)'}}>
-        <FontAwesomeIcon icon={faCartArrowDown} size='25px' />
+   
         </button>
-        </div>
+        </div> */}
          
         </Navbar>
       </div>

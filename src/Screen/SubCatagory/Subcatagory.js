@@ -35,11 +35,11 @@ export default class Subcatagory extends Component {
         <OwlCarousel items={2}  
           margin={8} >     
           {Subcat.Games.map((a) => 
-       <p className='OWL' >
+       <p className='OWL'>
          <button  onClick={this.handleClick} 
         style={{ 
           height:37,width:140,
-        marginRight:5,marginLeft:5,marginTop:7,
+        marginRight:"",marginLeft:5,marginTop:7,
         borderWidth:1,
         borderColor:'rgb(99, 195, 165)' ,
         backgroundColor:'white',

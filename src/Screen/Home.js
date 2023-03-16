@@ -21,14 +21,14 @@ import Footer from "../Layout/Footer";
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import { getNewArrivalsDetails, getSlider } from "../services/APIServices";
+import { getCategory, getNewArrivalsDetails, getSlider } from "../services/APIServices";
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       sliderImage: [],
-      arrivalsDetails:[],
+      arrivalsDetails: [],
       slider: [],
       categoryList: [],
       isOpen: false
@@ -47,13 +47,13 @@ export default class Home extends Component {
 
 
   loadAll = () => {
-    Promise.all([getSlider(),getNewArrivalsDetails()])
+    Promise.all([getSlider(), getNewArrivalsDetails(), getCategory()])
       .then((response) => {
         this.setState({
           sliderImage: response[0].data,
           arrivalsDetails: response[1].data,
+          categoryList: response[2].data,
         });
-        console.log('slider arrivalsDetails->>>>>>>>', this.state.arrivalsDetails);
       })
       .catch((err) => {
         console.log(err);
@@ -103,17 +103,14 @@ export default class Home extends Component {
                   <Carousel.Item>
                     <img
                       className="d-block w-100"
-                      src={item.image}
+                      // src={item.image}
+                      src={`https://funworks.in/uploads/slider/${item.image}`}
                       alt="First slide"
-                      style={{height:'60vh'}}
+                      style={{ height: '60vh' }}
                     />
-
                   </Carousel.Item>
-
                 )
-              }
-
-              )}
+              })}
             </Carousel>
           </div>
 
@@ -175,14 +172,19 @@ export default class Home extends Component {
               // loop  
               // nav  
               margin={8} >
-              {this.state.arrivalsDetails.map((a) =>
-                <Card style={{ alignItems: "center", borderWidth: 0, display: 'inline' }}>
-                  <Card.Img style={{ height: 30, width: 30, margin: ' 0px auto ' }} src={a.image} />
-                  <Card.Text>
-                    {a.name}
-                  </Card.Text>
-                </Card>
-              )}
+              {this.state.categoryList.map((a) => {
+                return (
+                  <Card style={{ alignItems: "center", borderWidth: 0, display: 'inline' }}>
+                    <Card.Img
+                     style={{ height: 30, width: 30, margin: ' 0px auto ' }} 
+                    // src={a.image} 
+                    src={`https://funworks.in/uploads/category/${a.image}`}
+                    />
+                    <Card.Text>
+                      {a.name}
+                    </Card.Text>
+                  </Card>)
+              })}
             </OwlCarousel>
           </div>
 
@@ -204,15 +206,15 @@ export default class Home extends Component {
         </div> */}
           <div className="SpaceHomePage">
             <Row xs={3} md={3} className="g-4" style={{ borderRadius: 0 }}>
-              {card.Card.map((b) =>
-                <Col>
-
-                  <Card style={{ borderWidth: 1, borderRadius: 0 }}>
-                    <Card.Img style={{ borderRadius: 0 }} src={b.image} />
-                  </Card>
-
-                </Col>
-              )}
+              {this.state.arrivalsDetails.map((b) => {
+                return (
+                  <Col>
+                    <Card style={{ borderWidth: 1, borderRadius: 0 }}>
+                      <Card.Img style={{ borderRadius: 0 }} src={`https://funworks.in/uploads/game/${b.image}`} />
+                    </Card>
+                  </Col>
+                )
+              })}
             </Row>
           </div>
           <div style={{ marginBottom: '1%' }}>

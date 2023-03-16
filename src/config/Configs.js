@@ -1,4 +1,4 @@
-const PRODUCTION = false;
+const PRODUCTION = true;
 const END_POINT = PRODUCTION
   ? //  "https://funtoo.invoice2day.in/"
     "https://funworks.in/"
